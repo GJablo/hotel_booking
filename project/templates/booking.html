@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="/static/main.css">
+</head>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+        margin: 0;
+        padding: 0;
+    }
+
+    h1 {
+        text-align: center;
+        color: #333;
+    }
+
+    form {
+        max-width: 400px;
+        margin: 20px auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    label {
+        display: block;
+        margin-bottom: 8px;
+        color: #333;
+    }
+
+    input[type="text"],
+    input[type="date"],
+    select {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 16px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        font-size: 16px;
+    }
+
+    button {
+        width: 100%;
+        padding: 12px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+    }
+
+    button:hover {
+        background-color: #0056b3;
+    }
+
+    /* Popup styles */
+    .popup {
+        display: none;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+    }
+
+    .popup p {
+        margin-bottom: 16px;
+    }
+
+    .overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 999;
+    }
+</style>
+<body>
+    <nav class="navbar">
+        <h1 style="border: 2px; color: whitesmoke; text-align: left;"><i class='bx bxs-hotel bx-tada' style='color:#f30303' ></i>Comfort Inn Hotel</h1>
+        <ul class="nav-list">
+            <li><a href="/booking">Book Now</a></li>
+            <li><a href="/bookings">Bookings</a></li>
+            <li><a href="{{ url_for('occupancy_forecast_page') }}">Occupancy Forecast</a></li>
+            <li><a href="/rooms">View Rooms</a></li>
+            <li><a href="/about">About</a></li>
+            <li><a href="/contact">Contact Us</a></li>
+            <li><a href="/">Home</a></li>
+        </ul>
+    </nav>
+    <h1>Book Now</h1>
+    <form id="bookingForm" action="{{ url_for('book') }}" method="post">
+        <label for="name">Name:</label><br>
+        <input type="text" id="name" name="name"><br>
+        <label for="room">Room:</label><br>
+        <select id="room" name="room_name">  
+            <option value="" selected disabled>Select</option>
+            <option value="Penthouse Suite 1">Penthouse Suite 1</option>
+            <option value="Penthouse Suite 2">Penthouse Suite 2</option>
+            <option value="Suite 1">Suite 1</option>
+            <option value="Suite 2">Suite 2</option>
+            <option value="Deluxe Room 1">Deluxe Room 1</option>
+            <option value="Deluxe Room 2">Deluxe Room 2</option>
+            <option value="Standard Room 1">Standard Room 1</option>
+            <option value="Standard Room 2">Standard Room 2</option>
+        </select><br>
+        <label for="start_date">Start Date:</label><br>
+        <input type="date" id="start_date" name="start_date"><br>
+        <label for="end_date">End Date:</label><br>
+        <input type="date" id="end_date" name="end_date"><br>
+        <button type="button" id="bookButton" onclick="togglePopup()">Book</button>
+    </form>
+    <!-- Popup -->
+    <div class="overlay" id="overlay"></div>
+    <div class="popup" id="popup">
+        <p>Booking successful!</p>
+        <button onclick="closePopup()">Close</button>
+    </div>
+    <div class="copyright">
+        &copy; 2022 Comfort Inn Hotel. All rights reserved.
+    </div>
+    <script>
+        function togglePopup() {
+            var popup = document.getElementById('popup');
+            var overlay = document.getElementById('overlay');
+            popup.style.display = 'block';
+            overlay.style.display = 'block';
+        }
+
+        function closePopup() {
+            var popup = document.getElementById('popup');
+            var overlay = document.getElementById('overlay');
+            popup.style.display = 'none';
+            overlay.style.display = 'none';
+        }
+        function togglePopup() {
+            // Get form data
+            const name = document.getElementById('name').value;
+            const roomName = document.getElementById('room').value;
+            const startDate = document.getElementById('start_date').value;
+            const endDate = document.getElementById('end_date').value;
+
+            // Create popup message
+            const popupMessage = `Name: ${name}\nRoom: ${roomName}\nStart Date: ${startDate}\nEnd Date: ${endDate}\n\nAre you sure you want to book?`;
+
+            // Ask user for confirmation
+            if (confirm(popupMessage)) {
+                // If user confirms, submit form
+                document.getElementById('bookingForm').submit();
+            } else {
+                // If user cancels, do nothing
+                return;
+            }
+        }
+    </script>
+    
+</body>
+</html>

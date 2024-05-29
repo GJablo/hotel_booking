@@ -1,0 +1,131 @@
+.background-image {
+    background-image: url("/Images/Hotel lobby.jpg");
+    background-size: cover; /* Ensure the image covers the entire element */
+    background-position: center; /* Center the image */
+    height: 500px; /* Adjust height as needed */
+    position: relative; /* Establish positioning context for child elements */
+    filter: brightness(60%);
+}
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black overlay */
+}
+
+.text-over-image {
+    position: absolute; /* Position the text relative to the parent element */
+    top: 50%; /* Position vertically at 50% of the parent element */
+    left: 50%; /* Position horizontally at 50% of the parent element */
+    transform: translate(-50%, -50%); /* Center the text */
+    text-align: center; /* Align text to the center */
+    color: white; /* Text color */
+}
+
+.text-over-image h1 {
+    font-size: 42px; /* Adjust heading font size */
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: bolder;
+}
+
+.text-over-image p {
+    font-size: 26px; /* Adjust paragraph font size */
+}
+/* Style the navigation bar */
+.navbar {
+    background-color: black; /* Background color */
+    overflow: hidden; /* Clear floats */
+}
+
+/* Style the navigation links */
+.nav-list {
+    list-style-type: none; /* Remove bullet points */
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove default padding */
+}
+
+.nav-list li {
+    float: right; /* Float the list items to create horizontal layout */
+}
+
+.nav-list li a {
+    display: block; /* Make the links block elements */
+    color: white; /* Text color */
+    text-align: center; /* Center-align the text */
+    padding: 14px 16px; /* Add padding */
+    text-decoration: none; /* Remove underline */
+}
+
+.nav-list li a:hover {
+    background-color: #ddd; /* Background color on hover */
+    color: black; /* Text color on hover */
+}
+* {box-sizing: border-box;}
+
+/* Slideshow container */
+.slideshow-container {
+  max-width: 1000px;
+  position: relative;
+  margin: auto;
+}
+
+/* Hide the images by default */
+.mySlides {
+  display: none;
+}
+
+/* Next & previous buttons */
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  margin-top: -22px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+  background-color: rgba(0,0,0,0.8);
+}
+
+/* Caption text */
+.text {
+  color: #f2f2f2;
+  font-size: 15px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+}
+
+/* The dots*/
+.dot {
+  cursor:pointer;
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active, .dot:hover {
+  background-color: #717171;
+}

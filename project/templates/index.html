@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="/static/main.css">
+</head>
+<style>
+    .service-icon {
+        width: 50px;
+        height: 50px;
+        margin: 10px;
+        background-color: #ccc;
+        border-radius: 50%;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 24px;
+        color: #fff;
+    }
+
+    .accommodation {
+        background-color: #007bff; /* Blue color for accommodation */
+    }
+
+    .room-service {
+        background-color: #28a745; /* Green color for room service */
+    }
+
+    .wifi {
+        background-color: #ffc107; /* Yellow color for Wi-Fi */
+    }
+
+    .house-keeping{
+        background-color: brown;/*brown color for house keeping */
+    }
+
+    .fitness-centre{
+        background-color: darkgray; /* darkgray for fitness */
+    }
+
+    .pool{
+        background-color: darkblue; /* darkblue for the pool */
+    }
+
+    .spa{
+        background-color: chocolate; /* chocolate for spa */
+    }
+</style>
+<body>
+    
+    <nav class="navbar">
+        <h1 style="border: 2px; color: whitesmoke;"><i class='bx bxs-hotel bx-tada' style='color:#f30303' ></i>Comfort Inn Hotel</h1>
+        <ul class="nav-list">
+            <li><a href="/booking">Book Now</a></li>
+            <li><a href="/bookings">Bookings</a></li>
+            <li><a href="{{ url_for('occupancy_forecast_page') }}">Occupancy Forecast</a></li>
+            <li><a href="/rooms">View Rooms</a></li>
+            <li><a href="/about">About</a></li>
+            <li><a href="/contact">Contact Us</a></li>
+            <li><a href="/">Home</a></li>
+        </ul>
+    </nav>
+    <div class="background-image">
+        <div class="overlay"></div>
+        <div class="text-over-image">
+            <h1>Welcome to Our Hotel</h1>
+            <p>Book your stay now and Enjoy!</p>
+        </div>
+    </div>
+    <br>
+    <h2>Services</h2>
+    <div style="background-color: black; color: whitesmoke;"><div class="service-icon accommodation">A</div><p>The icon is all about accomodation <br>Providing comfortable and well-appointed rooms for guests to stay in during their visit.</p></div>
+    <div style="background-color: black; color: whitesmoke;"><div class="service-icon room-service">RS</div><p>The icon is all about room service <br>Offering food and beverage options that can be delivered directly to the guest's room.</p></div>
+    <div style="background-color: black; color: whitesmoke;"><div class="service-icon wifi">W</div><p>The icon is all about wifi <br>Availability of internet for free browsing</p></div>
+    <div style="background-color: black; color: whitesmoke;"><div class="service-icon house-keeping">HK</div><p>The icon is all about house keeping <br>Regular cleaning and maintenance of rooms to ensure cleanliness and hygiene standards are met.</p></div>
+    <div style="background-color: black; color: whitesmoke;"><div class="service-icon fitness-centre">FC</div><p>The icon is all about fitness centre <br>Stay active and energized during your stay with access to our state-of-the-art fitness center, equipped with modern exercise equipment</p></div>
+    <div style="background-color: black; color: whitesmoke;"><div class="service-icon pool">P</div><p>The icon is all about pool <br>Relax and unwind by taking a refreshing dip in our sparkling swimming pool, perfect for leisurely swims or soaking up the sun.</p></div>
+    <div style="background-color: black; color: whitesmoke;"><div class="service-icon spa">S</div><p>The icon is all about a spa <br>Indulge in ultimate relaxation and rejuvenation at our luxurious spa, where skilled therapists offer a range of massages and treatments.</p></div><br>
+    <div style="background-color: black; color: whitesmoke;">
+        <p>There is 24 hour service ,that is the availability of our staff throughout to help out with inquiries </p>
+        <p>Presence of Airport Shuttle so as to provide peace of mind to customers who arrive from abroad</p>
+    </div>
+    
+    <br>
+    <div class="copyright">
+        &copy; 2022 Comfort Inn Hotel. All rights reserved.
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="/static/main.css">
+    <style>
+        body {
+
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background-color: black;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .review {
+            background-color: #fff;
+            border-radius: 5px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .review p {
+            margin-bottom: 10px;
+        }
+
+        .history {
+            background-color: #fff;
+            border-radius: 5px;
+            padding: 20px;
+        }
+
+        .history p {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <nav style="background-color: gray;" class="navbar">
+        <h1 style="border: 2px; color: whitesmoke; text-align: left;"><i class='bx bxs-hotel bx-tada' style='color:#f30303' ></i>Comfort Inn Hotel</h1>
+        <ul class="nav-list">
+            <li><a href="/booking">Book Now</a></li>
+            <li><a href="/bookings">Bookings</a></li>
+            <li><a href="{{ url_for('occupancy_forecast_page') }}">Occupancy Forecast</a></li>
+            <li><a href="/rooms">View Rooms</a></li>
+            <li><a href="/about">About</a></li>
+            <li><a href="/contact">Contact Us</a></li>
+            <li><a href="/">Home</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+        <h1>About Us</h1>
+
+        <div class="history">
+            <h2>Our History</h2>
+            <p>The Comfort Inn Hotel, established in 2022, has stood as a symbol of elegance and sophistication for over a year.<br>Originally built as a luxury retreat for affluent travelers, the hotel has since become an iconic landmark in the heart of the city.<br>Throughout its year of emergence, the Crowny Hotel has hosted countless dignitaries, celebrities, and discerning guests, offering unparalleled hospitality and timeless charm.</p>
+        </div>
+
+        <div class="review">
+            <h2>Customer Reviews</h2>
+            <p>"My stay at Comfort Inn Hotel was fantastic! The staff were extremely friendly and accommodating, making me feel right at home from the moment I arrived. The room was spacious, clean, and well-maintained, offering beautiful views of the city."</p>
+            <p>- Gabriel</p>
+        </div>
+
+        <div class="review">
+            <p>"My recent stay at Comfort Inn Hotel was nothing short of magical! Nestled amidst the breathtaking scenery of the ocean, this charming hotel offered a truly unforgettable experience."</p>
+            <p>- Jane</p>
+        </div>
+
+        <div class="copyright">
+            &copy; 2022 Comfort Inn Hotel. All rights reserved.
+        </div>
+    </div>
+</body>
+</html>

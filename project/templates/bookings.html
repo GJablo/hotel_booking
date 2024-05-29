@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bookings</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="/static/main.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            border: 1px solid #ddd;
+            background-color: #fff;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        tr:hover {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <h1 style="border: 2px; color: whitesmoke; text-align: left;"><i class='bx bxs-hotel bx-tada' style='color:#f30303' ></i>Comfort Inn Hotel</h1>
+        <ul class="nav-list">
+            <li><a href="/booking">Book Now</a></li>
+            <li><a href="/bookings">Bookings</a></li>
+            <li><a href="{{ url_for('occupancy_forecast_page') }}">Occupancy Forecast</a></li>
+            <li><a href="/rooms">View Rooms</a></li>
+            <li><a href="/about">About</a></li>
+            <li><a href="/contact">Contact Us</a></li>
+            <li><a href="/">Home</a></li>
+        </ul>
+    </nav>
+    <h1>Bookings</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Room Name</th>
+                <th>Price</th>
+                <th>Amount</th>
+                <th>Start Date</th>
+                <th>End Date</th>
+                <th>Duration (Days)</th>
+                
+                
+            </tr>
+        </thead>
+        <tbody>
+            {% for booking in bookings %}
+            <tr>
+                <td>{{ booking.name }}</td>
+                <td>{{ booking.room_name }}</td>
+                <td>{{ booking.price }}</td>
+                <td>{{ booking.amount }}</td>
+                <td>{{ booking.start_date.strftime('%Y-%m-%d') }}</td>
+                <td>{{ booking.end_date.strftime('%Y-%m-%d') }}</td>
+                <td>{{ booking.duration }}</td>
+                
+                
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <br>
+    <div style="background-color: whitesmoke;" class="copyright">
+        &copy; 2022 Comfort Inn Hotel. All rights reserved.
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Check Room</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="/static/main.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> <!-- Include jQuery -->
+    <style>
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 20px;
+            border: 2px solid black;
+            border-radius: 5px;
+            z-index: 9999;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+        }
+
+        select,
+        input[type="date"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <h1 style="border: 2px; color: whitesmoke; text-align: left;"><i class='bx bxs-hotel bx-tada' style='color:#f30303' ></i>Comfort Inn Hotel</h1>
+        <ul class="nav-list">
+            <li><a href="/booking">Book Now</a></li>
+            <li><a href="/bookings">Bookings</a></li>
+            <li><a href="{{ url_for('occupancy_forecast_page') }}">Occupancy Forecast</a></li>
+            <li><a href="/rooms">View Rooms</a></li>
+            <li><a href="/about">About</a></li>
+            <li><a href="/contact">Contact Us</a></li>
+            <li><a href="/">Home</a></li>
+        </ul>
+    </nav>
+    <h1>Room Availability</h1>
+    
+    <label for="roomType">Select Room Type:</label>
+    <select id="roomType">
+        <option value="" selected disabled>Select</option>
+        <option value="Penthouse Suite 1">Penthouse Suite 1</option>
+        <option value="Penthouse Suite 2">Penthouse Suite 2</option>
+        <option value="Suite 1">Suite 1</option>
+        <option value="Suite 2">Suite 2</option>
+        <option value="Deluxe Room 1">Deluxe Room 1</option>
+        <option value="Deluxe Room 2">Deluxe Room 2</option>
+        <option value="Standard Room 1">Standard Room 1</option>
+        <option value="Standard Room 2">Standard Room 2</option>
+    </select><br><br>
+
+    <label for="checkInDate">Check-in Date:</label>
+    <input type="date" id="checkInDate"><br><br>
+
+    <label for="checkOutDate">Check-out Date:</label>
+    <input type="date" id="checkOutDate"><br><br>
+
+    <button id="forecastButton">Get Occupancy Forecast</button>
+
+    <div class="popup" id="popup">
+        <span id="popupMessage"></span>
+        <button id="closePopup">Close</button>
+    </div>
+    <div class="copyright">
+        &copy; 2022 Comfort Inn Hotel. All rights reserved.
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            $('#forecastButton').click(function() {
+                // Get selected room type and dates
+                var roomType = $('#roomType').val();
+                var checkInDate = $('#checkInDate').val();
+                var checkOutDate = $('#checkOutDate').val();
+    
+                // Calculate duration in days
+                var startDate = new Date(checkInDate);
+                var endDate = new Date(checkOutDate);
+                var duration = Math.ceil((endDate - startDate) / (1000 * 60 * 60 * 24));
+    
+                // Create data object
+                var data = {
+                    'room_type': roomType,
+                    'check_in_date': checkInDate,
+                    'check_out_date': checkOutDate,
+                    'duration': duration
+                };
+    
+                // Send POST request to occupancy_forecast endpoint
+                $.ajax({
+                    url: '/occupancy_forecast',
+                    type: 'POST',
+                    contentType: 'application/json',
+                    data: JSON.stringify(data),
+                    success: function(response) {
+                        if (response.occupancy_forecast === 'Room available for booking') {
+                            // Show popup with fail message
+                            $('#popupMessage').text('Room not available for selected dates.');
+                        } else {
+
+                            // Fill in the room type, check-in date, and check-out date fields on the booking page
+                            $('#room').val(roomType);
+                            $('#start_date').val(checkInDate);
+                            $('#end_date').val(checkOutDate);
+
+                            // Show popup with success message
+                            $('#popupMessage').text('Room available for booking.');
+
+                            
+
+                            $('#popupMessage').append('<button id="proceedToBooking">Proceed to Booking</button>');
+                            $('#proceedToBooking').click(function() {
+                            window.location.href = '/booking?room_type=' + roomType + '&check_in_date=' + checkInDate + '&check_out_date=' + checkOutDate;
+                        });
+                        }
+                        $('#popup').show();
+                    },
+                    error: function(xhr, status, error) {
+                        console.error('Error:', error);
+                        // Show error message in popup
+                        $('#popupMessage').text('Error fetching occupancy forecast.');
+                        $('#popup').show();
+                    }
+                });
+            });
+    
+            // Close the popup when Close button is clicked
+            $('#closePopup').click(function() {
+                $('#popup').hide();
+            });
+        });
+    </script>
+</body>
+</html>

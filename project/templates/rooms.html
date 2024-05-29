@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel Rooms</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="/static/main.css">
+</head>
+<body style="background-color: black;">
+    <nav style="background-color: gray;" class="navbar">
+        <h1 style="border: 2px; color: whitesmoke;"><i class='bx bxs-hotel bx-tada' style='color:#f30303' ></i>Comfort Inn Hotel</h1>
+        <ul class="nav-list">
+            <li><a href="/booking">Book Now</a></li>
+            <li><a href="/bookings">Bookings</a></li>
+            <li><a href="{{ url_for('occupancy_forecast_page') }}">Occupancy Forecast</a></li>
+            <li><a href="/rooms">View Rooms</a></li>
+            <li><a href="/about">About</a></li>
+            <li><a href="/contact">Contact Us</a></li>
+            <li><a href="/">Home</a></li>
+        </ul>
+    </nav>
+    <h2 style="color: whitesmoke;">Deluxe Room</h2>
+    <p style="color: white;">Our Deluxe room feature larger floor areas, upgraded furnishings and decor, and enhanced amenities such as premium bedding, larger bathrooms with luxury toiletries, and additional seating areas. <br>All services are offered here except for spa and House-Keeping <br>Ksh.30000@24hrs</p>
+    <div class="slideshow-container">
+        <div class="mySlides fade">
+            <img src="/Images/Deluxe Room/D R-bedroom.jpg" style="width: 100%;">
+        </div>
+        
+        <div class="mySlides fade">
+            <img src="/Images/Deluxe Room/D R-bedroom1.jpg" style="width: 100%;">
+        </div>
+        
+        <div class="mySlides fade">
+            <img src="/Images/Deluxe Room/D R-Livingroom.jpg" style="width: 100%;">
+        </div>
+
+        <div class="mySlides fade">
+            <img src="/Images/Deluxe Room/D R-Livingroom1.jpg" style="width: 100%;">
+        </div>
+
+        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+    </div>
+    <br>
+    <div style="text-align:center">
+        <span class="dot" onclick="currentSlide(1)"></span> 
+        <span class="dot" onclick="currentSlide(2)"></span> 
+        <span class="dot" onclick="currentSlide(3)"></span> 
+        <span class="dot" onclick="currentSlide(4)"></span>
+    </div>
+    <br>
+    <h2 style="color: whitesmoke;">Standard Room</h2>
+    <p style="color: white;">Our Standard room feature standard-sized beds, basic furnishings, and standard amenities such as a television, telephone, and private bathroom. <br>All services are offered here except spa, House-Keeping and Fitness-Centre <br>Ksh.20000@24hrs</p>
+    <div class="slideshow-container">
+        <div class="mySlides fade">
+            <img src="/Images/Standard Room/S R-bedroom.jpg" style="width: 100%;">
+        </div>
+        
+        <div class="mySlides fade">
+            <img src="/Images/Standard Room/S R-bedroom1.jpg" style="width: 100%;">
+        </div>
+        
+        <div class="mySlides fade">
+            <img src="/Images/Standard Room/S R-bedroom2.jpg" style="width: 100%;">
+        </div>
+
+        <div class="mySlides fade">
+            <img src="/Images/Standard Room/S R-Livingroom.jpg" style="width: 100%;">
+        </div>
+
+        <div class="mySlides fade">
+            <img src="/Images/Standard Room/S R-Livingroom1.jpg" style="width: 100%;">
+        </div>
+
+        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+    </div>
+    <br>
+    <div style="text-align:center">
+        <span class="dot" onclick="currentSlide(1)"></span> 
+        <span class="dot" onclick="currentSlide(2)"></span> 
+        <span class="dot" onclick="currentSlide(3)"></span> 
+        <span class="dot" onclick="currentSlide(4)"></span>
+        <span class="dot" onclick="currentSlide(5)"></span>
+    </div>
+    <br>
+    <h2 style="color: whitesmoke;">Suite</h2>
+    <p style="color: white;">Our Suite feature additional amenities such as a kitchenette or full kitchen, dining area, and in-room entertainment systems. <br>All services are offered except spa <br>Ksh.40000@24hrs</p>
+    <div class="slideshow-container">
+        <div class="mySlides fade">
+            <img src="/Images/Suite/S-livingroom.jpg" style="width: 100%;">
+        </div>
+        
+        <div class="mySlides fade">
+            <img src="/Images/Suite/S-livingroom1.jpg" style="width: 100%;">
+        </div>
+        
+        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+    </div>
+    <br>
+    <div style="text-align:center">
+        <span class="dot" onclick="currentSlide(1)"></span> 
+        <span class="dot" onclick="currentSlide(2)"></span> 
+        
+    </div>
+    <br>
+    <h2 style="color: whitesmoke;">Penthouse Suite</h2>
+    <p style="color: white;">Our Penthouse Suite is the epitome of our luxury accomodation ,located on the highest floor of our building thus having breathtaking panoramic views of surrounding area <br>It offers expansive living spaces, which include multiple bedrooms, a grand living room, dining area and even a private terrace(balcony). <br>It feature upscale amenities such as Jacuzzi tubs, high-end furnishings, state-of-the-art entertainment systems, and personalized concierge services. <br>Ksh.50000@24hrs</p>
+    <div class="slideshow-container">
+        <div class="mySlides fade">
+            <img src="/Images/Penthouse Suite/PTS1.jpg" style="width: 100%;">
+        </div>
+        
+        <div class="mySlides fade">
+            <img src="/Images/Penthouse Suite/PTS2.jpg" style="width: 100%;">
+        </div>
+        
+        <div class="mySlides fade">
+            <img src="/Images/Penthouse Suite/PTS3.jpg" style="width: 100%;">
+        </div>
+
+        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+    </div>
+    <br>
+    <div style="text-align:center">
+        <span class="dot" onclick="currentSlide(1)"></span> 
+        <span class="dot" onclick="currentSlide(2)"></span> 
+        <span class="dot" onclick="currentSlide(3)"></span> 
+    </div>
+    <div style="background-color: whitesmoke;" class="copyright">
+        &copy; 2022 Comfort Inn Hotel. All rights reserved.
+    </div>
+    <script>
+        var slideIndex = 0;
+        showSlides();
+    
+        function showSlides() {
+            var i;
+            var slides = document.getElementsByClassName("mySlides");
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            slideIndex++;
+            if (slideIndex >= slides.length) {slideIndex = 0} // Corrected index calculation
+            slides[slideIndex].style.display = "block";
+            setTimeout(showSlides, 3000); // Change image every 2 seconds
+        }
+    </script>
+    
+</body>
+</html>
